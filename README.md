@@ -1,4 +1,4 @@
-# a-fancy-tree
+# A Fancy Tree
 My personal learning project to make one fancy looking game tree.
 
 I document my progress on blog, which I created specifically for that purpose:
