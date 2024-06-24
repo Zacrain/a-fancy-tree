@@ -32,4 +32,4 @@ light_color = Color(1, 0.982, 0.82, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.956488, 0.291771, 0, -0.291771, 0.956488, 0.359872, 5.12557, 4.38881)
+transform = Transform3D(1, 0, 0, 0, 0.956488, 0.291771, 0, -0.291771, 0.956488, 0.059872, 5.02557, 4.68881)
