@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b38ei0nfxmgul"]
+
+[ext_resource type="PackedScene" uid="uid://brtpwup387x7p" path="res://assets/blender_models/player.blend" id="1_qkar3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pudi1"]
+radius = 0.6
+height = 2.16
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08, 0)
+shape = SubResource("CapsuleShape3D_pudi1")
+
+[node name="player" parent="." instance=ExtResource("1_qkar3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.560162, 1.577, 0)
