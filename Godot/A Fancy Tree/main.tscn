@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3je6v6enfbpe"]
+
+[ext_resource type="PackedScene" uid="uid://kv1prjmoijo4" path="res://assets/model_scenes/a_fancy_tree.tscn" id="1_ormtc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c20l1"]
+size = Vector3(16, 0.5, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyvdp"]
+albedo_color = Color(0.3825, 0.45, 0.385875, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u8djt"]
+material = SubResource("StandardMaterial3D_fyvdp")
+size = Vector3(16, 0.5, 16)
+
+[node name="Main" type="Node"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_c20l1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_u8djt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.900774, 0.434288, 0, -0.434288, 0.900774, 0, 29.6091, 21.9947)
+light_color = Color(1, 0.982, 0.82, 1)
+
+[node name="A Fancy Tree" parent="." instance=ExtResource("1_ormtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.956488, 0.291771, 0, -0.291771, 0.956488, 0.359872, 5.12557, 4.38881)

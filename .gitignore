@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Blender autosaves
+*.blend[0-9]*
+
+# SConstruct file
+/Godot/SConstruct
