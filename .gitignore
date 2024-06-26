@@ -36,3 +36,6 @@
 
 # SConstruct file
 /Godot/SConstruct
+
+# .vscode directory
+.vscode/**
