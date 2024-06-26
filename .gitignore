@@ -38,4 +38,4 @@
 /Godot/SConstruct
 
 # .vscode directory
-.vscode/*
+.vscode/**
