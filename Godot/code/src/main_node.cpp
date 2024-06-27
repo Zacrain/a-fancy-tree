@@ -7,10 +7,13 @@ using namespace godot;
 void MainNode::_ready() {
     if (Engine::get_singleton()->is_editor_hint())
         set_process_mode(Node::ProcessMode::PROCESS_MODE_DISABLED);
-    else
+    else {
         set_process_mode(Node::ProcessMode::PROCESS_MODE_INHERIT);
+        // Hide mouse cursor and capture mouse in middle of screen.
+        input.set_mouse_mode(Input::MouseMode::MOUSE_MODE_CAPTURED);
+    }
 
-     player_node_ptr = get_node<FPVPlayer>(player_node_path); // May become a nullptr!
+    player_node_ptr = get_node<FPVPlayer>(player_node_path); // May become a nullptr!
 }
 
 void MainNode::_physics_process(double delta) {

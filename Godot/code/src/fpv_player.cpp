@@ -3,6 +3,8 @@
 #include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/core/class_db.hpp>
 
+#include <godot_cpp/variant/utility_functions.hpp>
+
 #include "../include/vector_constants.hpp"
 
 using namespace godot;
@@ -43,6 +45,8 @@ void FPVPlayer::_physics_process(double delta) {
     // Reset movement. If no button is pressed, movement should stop and therefore be zero.
     move_direction.zero();
 
+    
+
     // ***** Ground Movement & Jump *****
     // Reasoning for using += and -= below instead of a single = :
     // If the player presses two opposite keys (almost) simultaneously, they should cancel each other out instead of
@@ -72,8 +76,21 @@ void FPVPlayer::_physics_process(double delta) {
     target_vel.x = move_direction.x * move_speed;
     target_vel.z = move_direction.z * move_speed;
 
+    
     set_velocity(target_vel);
     move_and_slide();
+}
+
+void FPVPlayer::_unhandled_input(const Ref<InputEvent> &event) {
+    const Ref<InputEventMouseMotion> mouse_motion_event = event;
+    // Ensure that the underlying pointer of Ref is not nullptr.
+    if (mouse_motion_event.is_valid()) {
+        double rotation_amount_y;
+        rotation_amount_y = mouse_motion_event->get_relative().x; // x-axis is the "side"-axis, thereby determines the rotation around y, the up axis.
+        UtilityFunctions::print("relative = ", mouse_motion_event->get_relative());
+        //set_rotation(Vector3(0, rotation_amount_y * 0.005, 0));
+        rotate_object_local(Vector3(0,1,0), rotation_amount_y * -0.005);
+    }
 }
 
 // Getter & Setter
@@ -100,3 +117,4 @@ inline void FPVPlayer::set_move_jump_speed(const double jump_speed) {
 inline void FPVPlayer::set_move_speed(const double ground_move_speed) {
     move_speed = ground_move_speed;
 }
+

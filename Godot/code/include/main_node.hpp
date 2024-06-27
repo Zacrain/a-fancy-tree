@@ -2,6 +2,7 @@
 #define MAIN_NODE_HPP
 
 #include <godot_cpp/classes/node.hpp>
+// #include <godot_cpp/classes/input.hpp>
 
 #include "../include/fpv_player.hpp"
 
@@ -19,6 +20,8 @@ class MainNode : public Node {
     protected:
     /// Pointer to player node. May be nullptr. Set during _ready().
     FPVPlayer* player_node_ptr; // TODO: mhm... are there smart pointers in Godot?
+    /// Reference to global Input singleton. Will be used to set up some control settings. (Like mouse mode.)
+    Input& input;
     /// Path of player node.
     const NodePath player_node_path {"player"};
     /// Teleport position to move the player to, if they fall below the map.
@@ -37,8 +40,8 @@ class MainNode : public Node {
 
     public:
 
-    /** @brief Class constructor. Does nothing currently. */
-    MainNode() {}
+    /** @brief Class constructor. Sets input singleton reference upon construction. */
+    MainNode() : input(*Input::get_singleton()) {}
 
     /** @brief Overrides _ready method called right after an object of this class was instantiated.
      * 

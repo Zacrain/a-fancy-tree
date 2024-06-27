@@ -5,6 +5,7 @@
 
 #include <godot_cpp/classes/character_body3d.hpp>
 #include <godot_cpp/classes/input.hpp>
+#include <godot_cpp/classes/input_event_mouse_motion.hpp>
 
 namespace godot {
 
@@ -76,6 +77,14 @@ class FPVPlayer : public CharacterBody3D {
      * @param[in] delta Time delta between calls. (Frametime.)
      */
     virtual void _physics_process(double delta) override;
+
+    /** @brief Handles unhandled input and overrides the base class virtual method. 
+     * 
+     * Here only used to process mouse movements.
+     * 
+     * @param[in] event Reference to the unhandled input event.
+     */
+    virtual void _unhandled_input(const Ref<InputEvent> &event) override;
 
     // ***** Getter & Setter *****
     inline double get_move_fall_speed() const;
