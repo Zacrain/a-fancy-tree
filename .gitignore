@@ -36,6 +36,7 @@
 
 # SConstruct file
 /Godot/SConstruct
+.sconsign.dblite
 
 # .vscode directory
 .vscode/
