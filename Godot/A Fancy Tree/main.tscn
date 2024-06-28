@@ -49,8 +49,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5, -8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.5, 14)
 
 [node name="player" parent="." instance=ExtResource("2_blwhp")]
+"horizontal rotation speed" = 0.0005
 "fall speed" = 50.0
 "jump speed" = 15.0
+"vertical rot speed" = 0.0005
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.336281, 0.5, -6.76721)
 
 [node name="world_cam" type="Camera3D" parent="."]
