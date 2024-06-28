@@ -10,6 +10,10 @@
 
 namespace godot {
 
+/** @class FPVPlayer
+ * @brief The FPVPlayer (First Person View Player) processes player inputs and will move the character body accordingly
+ *        in a first person view style.
+ */
 class FPVPlayer : public CharacterBody3D {
 
     GDCLASS(FPVPlayer, CharacterBody3D);
