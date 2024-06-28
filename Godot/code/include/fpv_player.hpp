@@ -43,7 +43,7 @@ class FPVPlayer : public CharacterBody3D {
     /// Vertical rotation angle. Modified by rotation processing.
     double vertical_rot_ang;
     /// Direction of vertical rotations.
-    double vertical_rot_direction {1.0};
+    double vertical_rot_direction {-1.0};
     /// Vertical rotation speed. "Mouse sensitivity Y".
     double vertical_rot_speed {0.001};
 

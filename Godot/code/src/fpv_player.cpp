@@ -94,13 +94,13 @@ void FPVPlayer::_physics_process(double delta) {
     // If the player presses two opposite keys (almost) simultaneously, they should cancel each other out instead of
     // having the last pressed key overwrite the previous one.
     if (input.is_action_pressed(action_name_move_forward))
-        move_direction.z += 1;
-    if (input.is_action_pressed(action_name_move_back))
         move_direction.z -= 1;
+    if (input.is_action_pressed(action_name_move_back))
+        move_direction.z += 1;
     if (input.is_action_pressed(action_name_move_left))
-        move_direction.x += 1;
-    if (input.is_action_pressed(action_name_move_right))
         move_direction.x -= 1;
+    if (input.is_action_pressed(action_name_move_right))
+        move_direction.x += 1;
     if (input.is_action_pressed(action_name_move_jump)) // bunny hop?
         move_direction.y += 1;
 
@@ -176,7 +176,7 @@ inline bool FPVPlayer::get_horizontal_rot_direction() const {
 }
 
 inline bool FPVPlayer::get_vertical_rot_direction() const {
-    return vertical_rot_direction < 0 ? true : false;
+    return vertical_rot_direction > 0 ? true : false;
 }
 
 inline double FPVPlayer::get_horizontal_rot_speed() const {
