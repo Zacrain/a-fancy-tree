@@ -151,13 +151,13 @@ void FPVPlayer::_unhandled_input(const Ref<InputEvent> &event) {
             angle_y_glob_to_y_loc = 
                 Math::acos(get_global_basis().get_column(1).dot(camera_node_ptr->get_basis().get_column(1)));
 
-            if (accumulated_vertical_rot > Math_PI_HALFED + vertical_overstretch_down) {
-                vertical_rot_ang = Math_PI_HALFED + vertical_overstretch_down - angle_y_glob_to_y_loc;
-                accumulated_vertical_rot = Math_PI_HALFED + vertical_overstretch_down;
+            if (accumulated_vertical_rot > Math_PI_HALFED + vertical_overstretch_up) {
+                vertical_rot_ang = Math_PI_HALFED + vertical_overstretch_up - angle_y_glob_to_y_loc;
+                accumulated_vertical_rot = Math_PI_HALFED + vertical_overstretch_up;
             }
-            else if (accumulated_vertical_rot < -(Math_PI_HALFED + vertical_overstretch_up)) {
-                vertical_rot_ang = -(Math_PI_HALFED + vertical_overstretch_up - angle_y_glob_to_y_loc);
-                accumulated_vertical_rot = -(Math_PI_HALFED + vertical_overstretch_up);
+            else if (accumulated_vertical_rot < -(Math_PI_HALFED + vertical_overstretch_down)) {
+                vertical_rot_ang = -(Math_PI_HALFED + vertical_overstretch_down - angle_y_glob_to_y_loc);
+                accumulated_vertical_rot = -(Math_PI_HALFED + vertical_overstretch_down);
             }
             
             camera_node_ptr->rotate_x(vertical_rot_ang);
