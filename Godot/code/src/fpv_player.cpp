@@ -66,9 +66,9 @@ void FPVPlayer::_bind_methods() {
 
     // Vertical Rotation Speed
     ClassDB::bind_method(D_METHOD("get_vertical_rot_speed"), &FPVPlayer::get_vertical_rot_speed);
-    ClassDB::bind_method(D_METHOD("set_vertical_rot_speed", "vertical_rot_speed"), 
+    ClassDB::bind_method(D_METHOD("set_vertical_rot_speed", "vertical_rotation_speed"), 
         &FPVPlayer::set_vertical_rot_speed);
-    ClassDB::add_property("FPVPlayer", PropertyInfo(Variant::FLOAT, "vertical rot speed"),
+    ClassDB::add_property("FPVPlayer", PropertyInfo(Variant::FLOAT, "vertical rotation speed"),
         "set_vertical_rot_speed", "get_vertical_rot_speed");
 
 }
