@@ -7,6 +7,7 @@ radius = 0.6
 height = 2.16
 
 [node name="FPVPlayer" type="FPVPlayer"]
+"vertical rotation speed" = 0.001
 process_mode = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
