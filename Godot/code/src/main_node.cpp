@@ -1,6 +1,7 @@
 #include "../include/main_node.hpp"
 
 #include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
 
 using namespace godot;
 
@@ -24,5 +25,12 @@ void MainNode::_physics_process(double delta) {
     if (player_node_ptr && player_node_ptr->get_position().y < -10) {
         player_node_ptr->set_position(teleport_pos);
     }
+}
 
+void MainNode::_process(double delta) {
+    // TODO: preliminary polling? Use input events instead?
+    if (input.is_action_just_pressed(action_name_control_quit)) {
+        SceneTree* scene_tree = get_tree();
+        scene_tree->quit();
+    }
 }

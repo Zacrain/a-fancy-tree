@@ -49,6 +49,13 @@ void FPVPlayer::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_move_speed", "ground_move_speed"), &FPVPlayer::set_move_speed);
     ClassDB::add_property("FPVPlayer", PropertyInfo(Variant::FLOAT, "ground move speed"), "set_move_speed", 
         "get_move_speed");
+    
+    // Move Sprint Speed
+    ClassDB::bind_method(D_METHOD("get_move_sprint_speed"), &FPVPlayer::get_move_sprint_speed);
+    ClassDB::bind_method(D_METHOD("set_move_sprint_speed", "ground_move_sprint_speed"), 
+        &FPVPlayer::set_move_sprint_speed);
+    ClassDB::add_property("FPVPlayer", PropertyInfo(Variant::FLOAT, "sprint speed"), "set_move_sprint_speed", 
+        "get_move_sprint_speed");
 
     // Vertical Overstretch Down
     ClassDB::bind_method(D_METHOD("get_vertical_overstretch_down"), &FPVPlayer::get_vertical_overstretch_down);
@@ -94,15 +101,19 @@ void FPVPlayer::_physics_process(double delta) {
     // If the player presses two opposite keys (almost) simultaneously, they should cancel each other out instead of
     // having the last pressed key overwrite the previous one.
     if (input.is_action_pressed(action_name_move_forward))
-        move_direction.z -= 1;
+        move_direction.z -= 1.0;
     if (input.is_action_pressed(action_name_move_back))
-        move_direction.z += 1;
+        move_direction.z += 1.0;
     if (input.is_action_pressed(action_name_move_left))
-        move_direction.x -= 1;
+        move_direction.x -= 1.0;
     if (input.is_action_pressed(action_name_move_right))
-        move_direction.x += 1;
-    if (input.is_action_pressed(action_name_move_jump)) // bunny hop?
-        move_direction.y += 1;
+        move_direction.x += 1.0;
+    if (input.is_action_pressed(action_name_move_jump)) // bunny hop
+        move_direction.y += 1.0;
+    if (input.is_action_pressed(action_name_move_sprint)) // Toggle sprinting on/off.
+        move_sprint_toggle = 1.0;
+    else 
+        move_sprint_toggle = 0.0;
 
     // Normalize vector if inequal to zero. Otherwise we would destroy the universe. (Division by zero.)
     if (move_direction != Vec3_ZERO)
@@ -119,8 +130,8 @@ void FPVPlayer::_physics_process(double delta) {
         target_vel.y = move_direction.y * move_jump_speed;
 
     // Set Ground movement velocity.
-    target_vel.x = move_direction.x * move_speed;
-    target_vel.z = move_direction.z * move_speed;
+    target_vel.x = move_direction.x * (move_speed + move_sprint_toggle * move_sprint_speed);
+    target_vel.z = move_direction.z * (move_speed + move_sprint_toggle * move_sprint_speed);
 
     
     set_velocity(target_vel);
@@ -195,6 +206,10 @@ inline double FPVPlayer::get_move_speed() const {
     return move_speed;
 }
 
+inline double FPVPlayer::get_move_sprint_speed() const {
+    return move_sprint_speed;
+}
+
 inline double FPVPlayer::get_vertical_overstretch_up() const {
     return Math::rad_to_deg(vertical_overstretch_up);
 }
@@ -229,6 +244,10 @@ inline void FPVPlayer::set_move_jump_speed(const double jump_speed) {
 
 inline void FPVPlayer::set_move_speed(const double ground_move_speed) {
     move_speed = ground_move_speed;
+}
+
+inline void FPVPlayer::set_move_sprint_speed(const double sprint_speed) {
+    move_sprint_speed = sprint_speed;
 }
 
 inline void FPVPlayer::set_vertical_overstretch_down(const double vertical_overtretch_downwards_degree) {

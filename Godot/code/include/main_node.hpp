@@ -24,6 +24,8 @@ class MainNode : public Node {
     Input& input;
     /// Path of player node.
     const NodePath player_node_path {"player"};
+    /// Action name for the quit control action by the player.
+    const StringName action_name_control_quit {"control_quit"};
     /// Teleport position to move the player to, if they fall below the map.
     const Vector3 teleport_pos {-0.336, 0.5, -6.767};
     
@@ -55,11 +57,17 @@ class MainNode : public Node {
      * 
      *  Currently does the following:
      *  - teleports the player - if existing - back to ground when they fall below.
-     *  - TODO: set mouse mode and stuff
      * 
      * @param[in] delta Time delta between calls. (Frametime.)
      */
     virtual void _physics_process(double delta) override;
+
+    /** @brief Overrides the inherited _process method which is called each frame.
+     * 
+     *  Here, checks whether a quit action is called to close the game.
+     * 
+     */
+    virtual void _process(double delte) override;
 
 
 };

@@ -10,6 +10,6 @@ But at first this will be a humble beginning, as I have much to learn about maki
 
 # Current State
 
-I managed to create a simple model in Blender and import it into the Godot project. Here's a screenshot from the very first iteration of the fancy tree:
+I've implemented first-person-view controls and managed to make the game look much better by using environment nodes.
 
-<img src="images/first_fancy_tree.jpg" alt="First Fancy Tree" width="630"/>
+<img src="images/a_fancy_tree_screenshot_current_state.png" alt="Fancy Trees with Lights Shadows and TAA" width="630"/>

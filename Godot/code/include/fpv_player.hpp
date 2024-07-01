@@ -54,6 +54,11 @@ class FPVPlayer : public CharacterBody3D {
     double move_jump_speed {10.0};
     /// Move speed multiplier.
     double move_speed {10.0};
+    /// Toggles the addition of move_sprint_speed by multiplying it with 0 or 1 depending on user input.
+    double move_sprint_toggle {0.0};
+    /// Move sprint speed summand.
+    double move_sprint_speed {10.0};
+    
     
 
     /// Reference to global Input singleton. This will allow us to catch and process user inputs.
@@ -71,6 +76,7 @@ class FPVPlayer : public CharacterBody3D {
     const StringName action_name_move_jump    {"move_jump"};
     const StringName action_name_move_left    {"move_left"};
     const StringName action_name_move_right   {"move_right"};
+    const StringName action_name_move_sprint  {"move_sprint"};
 
     /// Camera and Player transform objects. Modified by rotation processing.
     Transform3D camera_transform;
@@ -133,6 +139,7 @@ class FPVPlayer : public CharacterBody3D {
     inline double get_move_fall_speed() const;
     inline double get_move_jump_speed() const;
     inline double get_move_speed() const;
+    inline double get_move_sprint_speed() const;
     inline double get_vertical_overstretch_down() const;
     inline double get_vertical_overstretch_up() const;
     inline double get_vertical_rot_speed() const;
@@ -144,6 +151,7 @@ class FPVPlayer : public CharacterBody3D {
     inline void set_move_fall_speed(const double fall_speed);
     inline void set_move_jump_speed(const double jump_speed);
     inline void set_move_speed(const double ground_move_speed);
+    inline void set_move_sprint_speed(const double sprint_speed);
     inline void set_vertical_overstretch_down(const double vertical_overtretch_downwards_degree);
     inline void set_vertical_overstretch_up(const double vertical_overstretch_upwards_degree);
     inline void set_vertical_rot_speed(const double vertical_rotation_speed);
