@@ -2,9 +2,9 @@
 #define MAIN_NODE_HPP
 
 #include <godot_cpp/classes/node.hpp>
-// #include <godot_cpp/classes/input.hpp>
+#include <godot_cpp/classes/input.hpp>
 
-#include "../include/fpv_player.hpp"
+#include "fpv_player.hpp"
 
 namespace godot {
 
