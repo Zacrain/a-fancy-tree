@@ -115,9 +115,8 @@ void FPVPlayer::_physics_process(double delta) {
     else 
         move_sprint_toggle = 0.0;
 
-    // Normalize vector if inequal to zero. Otherwise we would destroy the universe. (Division by zero.)
-    if (move_direction != Vec3_ZERO)
-        move_direction.normalize();
+    // normalize() already checks whether the vector is zero.
+    move_direction.normalize();
 
     // Get the move direction related to the global coordinate system. This will make the succeeding computations
     // perform in the global coordinate system, which seems to be used by set_velocity() and move_and_slide();
